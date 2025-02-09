@@ -1,0 +1,10 @@
+.project-image-description {
+  width: 20%;
+  /* Adjust the width as needed */
+  height: auto;
+  border-radius: 5px;
+  object-fit: cover;
+  /* Maintain aspect ratio and cover the area */
+  order: -1;
+  /* Move image to the left */
+}
