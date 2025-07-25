@@ -5,636 +5,264 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sangineedi Rohith Adithya</title>
+    <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/883/883606.svg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: black;
-            color: white;
-            line-height: 1.6;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            /* Ensure the body takes up at least the full viewport height */
-        }
-
-        /* Home Section */
-        #home {
-            cursor: pointer;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 0.5em;
-            transition: color 0.3s ease;
-        }
-
-        h1:hover {
-            color: #64ffda;
-        }
-
-        #home p {
-            font-size: 1.2em;
-            color: #ccc;
-        }
-
-        .particle {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: #64ffda;
-            opacity: 0;
-            animation: float 3s linear infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) translateX(0) rotate(0deg);
-                opacity: 0;
-            }
-
-            20% {
-                opacity: 1;
-            }
-
-            80% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(-200px) translateX(50px) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        /* Sections */
-        section {
-            padding: 30px;
-            text-align: center;
-            display: none;
-        }
-
-        section:target {
-            display: block;
-        }
-
-        /* Navigation */
-        nav {
-            background-color: #1e272e;
-            color: white;
-            padding: 1em;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            transition: top 0.3s;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0.75em 1.25em;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            display: inline-block;
-        }
-
-        nav a:hover {
-            background-color: #64ffda;
-            color: black;
-        }
-
-        h2 {
-            font-size: 2.5em;
-            margin-bottom: 0.75em;
-            color: #64ffda;
-        }
-
-        p {
-            font-size: 1.1em;
-            color: #ccc;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* About Me */
-        #about {
-            background-color: #1e272e;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 70vh;
-        }
-
-        #about p {
-            font-size: 1.2em;
-            line-height: 1.8;
-            text-align: left;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: rgba(0, 0, 0, 0.3);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .highlight {
-            color: #64ffda;
-            font-weight: bold;
-        }
-
-        /* Projects Section */
-        #projects {
-            background-color: #2d3436;
-        }
-
-        .project-card {
-            background-color: rgba(0, 0, 0, 0.4);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-            text-align: left;
-        }
-
-        .project-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .project-title {
-            font-size: 1.8em;
-            color: #64ffda;
-            margin-bottom: 0;
-            /* Remove bottom margin from the title */
-        }
-
-        .project-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            /* Add gap between description and image */
-        }
-
-        .project-description {
-            font-size: 1.1em;
-            color: #ccc;
-            line-height: 1.6;
-            flex: 2;
-            /* Adjust the flex values as needed */
-        }
-
-        .project-image-description {
-            width: 20%;
-            /* Adjust the width as needed */
-            height: auto;
-            border-radius: 5px;
-            object-fit: cover;
-            /* Maintain aspect ratio and cover the area */
-            order: -1;
-            /* Move image to the left */
-        }
-
-        .project-link {
-            display: inline-block;
-            margin-top: 1em;
-            padding: 0.75em 1.5em;
-            background-color: #64ffda;
-            color: black;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .project-link:hover {
-            background-color: #fff;
-            color: black;
-        }
-
-        #projects .contact-button {
-            display: inline-block;
-            margin-top: 2em;
-            padding: 1em 2em;
-            background-color: #fff;
-            color: black;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.2em;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        #projects .contact-button:hover {
-            background-color: #64ffda;
-            color: black;
-        }
-
-        /* Other Styles */
-        nav {
-            top: -60px;
-        }
-
-        section:target~nav {
-            top: 0;
-        }
-
-        .animate-charcter {
-            text-transform: uppercase;
-            background-image: linear-gradient(-225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100%);
-            background-size: auto auto;
-            background-clip: border-box;
-            background-size: 200% auto;
-            color: #fff;
-            background-clip: text;
-            text-fill-color: transparent;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textclip 3s linear infinite;
-            display: inline-block;
-            font-size: 19px;
-        }
-
-        @keyframes textclip {
-            to {
-                background-position: 200% center;
-            }
-        }
-
-        /* Styles for Contact Form */
-        #contact-form {
-            max-width: 600px;
-            margin: 20px auto;
-            text-align: left;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        #contact-form label {
-            display: block;
-            margin-top: 10px;
-            color: #ccc;
-        }
-
-        #contact-form input[type="text"],
-        #contact-form input[type="email"],
-        #contact-form textarea {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            border: 1px solid #555;
-            border-radius: 5px;
-            background-color: #333;
-            color: white;
-            box-sizing: border-box;
-        }
-
-        #contact-form textarea {
-            height: 150px;
-        }
-
-        #contact-form button {
-            background-color: #64ffda;
-            color: black;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s ease;
-        }
-
-        #contact-form button:hover {
-            background-color: #fff;
-        }
-
-        /* Styles for Connect With Me */
-        #connect-with-me {
-            margin-top: 30px;
-        }
-
-        #connect-with-me h3 {
-            color: #64ffda;
-            margin-bottom: 15px;
-        }
-
-        #connect-with-me a {
-            color: #ccc;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 1.2em;
-            transition: color 0.3s ease;
-        }
-
-        #connect-with-me a:hover {
-            color: #fff;
-        }
-
-        #connect-with-me i {
-            font-size: 1.5em;
-            margin: 0 5px;
-            /* Adjust spacing between icons */
-        }
-
-        /* Footer Styles */
-        footer {
-            background-color: #1e272e;
-            color: #ccc;
-            text-align: center;
-            padding: 1em;
-            margin-top: auto;
-            /* Push the footer to the bottom */
-        }
-
-        /* Button Style */
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #64ffda;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 3px #999;
-            transition: all 0.3s ease;
-            color: black;
-        }
-
-        .button:hover {
-            background-color: #fff;
-            box-shadow: 0 3px #666;
-            color: black;
-        }
-
-        .button:active {
-            background-color: #3e8e41;
-            box-shadow: 0 1px #666;
-            transform: translateY(2px);
-        }
-
-        /* Image Style */
-        .image-container {
-            width: 200px;
-            /* Adjust size as needed */
-            height: 200px;
-            margin: 20px auto;
-            /* Center the image */
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            /* Ensure image fits the container */
-            border-radius: 10%; /* Adds slight rounding to the image corners */
-        }
-
-        /* Techie Animation Styles */
-        .techie-animation {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background-color: #64ffda;
-            border-radius: 50%;
-            opacity: 0.7;
-            animation: moveTechie 5s linear infinite;
-        }
-
-        @keyframes moveTechie {
-            0% {
-                transform: translate(0, 0);
-            }
-
-            100% {
-                transform: translate(calc(100vw - 30px), calc(100vh - 30px));
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Portfolio of Sangineedi Rohith Adithya, B.Tech student specializing in Artificial Intelligence and Data Science. Showcasing projects, skills, and experience.">
+    <meta name="keywords" content="Rohith Adithya, AI, Data Science, Portfolio, Machine Learning, Python, Web Development, Student, Hyderabad">
+    <meta name="author" content="Sangineedi Rohith Adithya">
 </head>
 
 <body>
 
-    <div id="home">
-        <!-- Image Section -->
-        <div class="image-container">
-            <img src="https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://media.easy-peasy.ai/ea726477-e66b-4c73-bcbd-8efcdf91df1b/9c3e73e5-b967-40bb-8d30-01abe8470cb4.png" alt="Rohith Adithya - Profile">
-            <!-- Replace URL_TO_YOUR_IMAGE with the actual URL of your image -->
+    <header class="main-header">
+        <div class="container">
+            <nav>
+                <a href="#home" class="nav-logo">Rohith Adithya Sangineedi</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://drive.google.com/file/d/1r5xZYbfVWNDKgyK5iJXhYn-DzUMfiPdJ/view?usp=sharing" target="_blank" class="btn btn-primary">Resume</a></li>
+                </ul>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
         </div>
+    </header>
 
-        <h1 onclick="location.href='#about'">Hello, I am Sangineedi Rohith Adithya!</h1>
-        <p>Click the title to learn more about me.</p>
-
-        <div class="particle" style="top: 10%; left: 20%;"></div>
-        <div class="particle" style="top: 30%; left: 80%; animation-delay: 0.5s;"></div>
-        <div class="particle" style="top: 60%; left: 40%; animation-delay: 1s;"></div>
-        <div class="particle" style="top: 80%; left: 10%; animation-delay: 1.5s;"></div>
-        <div class="particle" style="top: 20%; left: 60%; animation-delay: 2s;"></div>
-        <div class="particle" style="top: 70%; left: 90%; animation-delay: 2.5s;"></div>
-
-        <!-- More Techie Animations -->
-        <div class="techie-animation" style="top: 5%; left: 15%; animation-delay: 1.2s;"></div>
-        <div class="techie-animation" style="top: 65%; left: 35%; animation-delay: 2.8s;"></div>
-        <div class="techie-animation" style="top: 25%; left: 45%; animation-delay: 0.7s;"></div>
-    </div>
-
-    <nav>
-        <a href="#about">About Me</a> |
-        <a href="#projects">Projects</a> |
-        <a href="#resume">Resume</a> |
-        <a href="#contact">Contact Me</a>
-    </nav>
-
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            I am a B.Tech pre-final year student specializing in <span class="highlight">Artificial Intelligence</span>
-            and <span class="highlight">Data Science</span> with a strong foundation in <span
-                class="highlight">data analytics</span>, including data visualization and statistical analysis.
-            <br><br>
-            I am passionate about <span class="highlight">problem-solving</span> and enjoy tackling complex challenges
-            using data-driven approaches.
-            <br><br>
-            As a <span class="highlight">Python enthusiast</span>, I am eager to build practical skills and knowledge
-            in machine learning and data science.
-            <br><br>
-            With good <span class="highlight">communication</span> and <span class="highlight">management skills</span>,
-            I can effectively collaborate within teams and present ideas clearly.
-            <br><br>
-            I am excited to continue learning and apply my skills to real-world data science problems. I am confident
-            that I can
-            make valuable contributions to any team.
-        </p>
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="profile-image-wrapper reveal fade-bottom">
+                <img src="https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://media.easy-peasy.ai/ea726477-e66b-4c73-bcbd-8efcdf91df1b/9c3e73e5-b967-40bb-8d30-01abe8470cb4.png" alt="Sangineedi Rohith Adithya - Profile" class="profile-image">
+            </div>
+            <h1 class="hero-title reveal fade-left">Hello, I'm <span class="gradient-text">Rohith Adithya Sangineedi!</span></h1>
+            <p class="hero-subtitle reveal fade-right">B.Tech Student in Artificial Intelligence & Data Science</p>
+            <div class="cta-buttons reveal fade-bottom">
+                <a href="#projects" class="btn btn-secondary">View My Work</a>
+                <a href="#contact" class="btn btn-tertiary">Get In Touch</a>
+            </div>
+        </div>
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+        <div class="particle particle-5"></div>
     </section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-
-        <div class="project-card">
-            <div class="project-header">
-                <h3 class="project-title">Employee Attrition Prediction - Machine Learning Web Application</h3>
+    <section id="about" class="section-padding">
+        <div class="container">
+            <h2 class="section-title reveal fade-bottom">About Me</h2>
+            <div class="about-content reveal fade-bottom">
+                <p>I am a B.Tech pre-final year student specializing in <span class="highlight">Artificial Intelligence</span> and <span class="highlight">Data Science</span> with a strong foundation in <span class="highlight">data analytics</span>, including data visualization and statistical analysis. I am passionate about <span class="highlight">problem-solving</span> and enjoy tackling complex challenges using data-driven approaches. As a <span class="highlight">Python enthusiast</span>, I am eager to build practical skills and knowledge in machine learning and data science. With good <span class="highlight">communication</span> and <span class="highlight">management skills</span>, I can effectively collaborate within teams and present ideas clearly. I am excited to continue learning and apply my skills to real-world data science problems. I am confident that I can make valuable contributions to any team.</p>
             </div>
-
-            <div class="project-content">
-                <img src="https://editor.analyticsvidhya.com/uploads/50662High-employee-turnover.jpg"
-                    alt="Employee Attrition Prediction" class="project-image-description">
-                <p class="project-description">
-                    This project creates a machine learning model to predict employee attrition. It uses a Flask web
-                    application, allowing users to input employee information and receive predictions instantly. Key
-                    steps include data preparation, model building with SVM, Flask setup, HTML/CSS design, and
-                    deployment on a cloud platform. Future enhancements include exploring different algorithms, UI
-                    improvements, and user authentication.
-                </p>
-            </div>
-            <a href="https://github.com/srohithadithya/Skill-Vertex" class="project-link">View on GitHub</a>
-        </div>
-
-        <div class="project-card">
-            <div class="project-header">
-                <h3 class="project-title">Car Selling Price Prediction using Machine Learning</h3>
-            </div>
-            <div class="project-content">
-                <img src="https://miro.medium.com/v2/resize:fit:1160/1*r5Dzp7eZaWQDZxPCsoJQxQ.png"
-                    alt="Car Selling Price Prediction" class="project-image-description">
-                <p class="project-description">
-                    Developed a predictive model for car selling prices using machine learning techniques in Python.
-                    This project leverages TensorFlow to build and train deep learning models that predict car prices
-                    based on various attributes such as make, model, year, mileage, and more. Key technologies used:
-                    Python, TensorFlow, WAMP Server, Django, and a CSV dataset. This project demonstrates how
-                    machine learning can be applied to real-world problems, providing car sellers and buyers with
-                    accurate price predictions to make informed decisions.
-                </p>
-            </div>
-            <a href="https://github.com/srohithadithya/Real-Time-Research-Project" class="project-link">View on GitHub</a>
-        </div>
-        <a href="mailto:rohithadithyas2005@gmail.com" class="contact-button">For More Details</a>
-
-    </section>
-
-    <section id="resume">
-        <h2>Resume</h2>
-        <!-- Placeholder Resume Content - Replace with your LinkedIn Content -->
-        <h3>Summary</h3>
-        <p>A highly motivated B.Tech student with a strong interest in pursuing a career that offers ample
-            opportunities for
-            development and research in technology and innovation. I am particularly interested in applying my
-            knowledge to
-            solve real-world problems. My academic projects have provided me with hands-on experience in software
-            development, programming, and computer science principles. I thrive in collaborative environments and enjoy
-            working as part of a team to develop efficient solutions. As a quick learner with excellent communication
-            skills, I
-            am eager to contribute to dynamic teams and take on new challenges within the tech industry. I am seeking
-            an
-            internship position that will allow me to utilize my skills on impactful projects</p>
-
-        <h3>Experience</h3>
-        
-            <P>
-            <li>
-                <strong>Python Intern</strong>, Skill-Vertex
-                <br>Nov 2024-Jan 2025
-                <br>Worked on real-time projects driven by data science, gaining practical knowledge of Python's usage.
-            </li>
-            </P>
-
-            <!-- Add more experience items -->
-        
-
-        <h3>Education</h3>
-        <li>
-            <strong>B.Tech (Artificial Intelligence & Data Science)</strong>, Malla Reddy College of Engineering
-            <br>2022-2026
-        </li>
-        <!-- Add more education items -->
-
-
-        <h3>Skills</h3>
-        <p>
-        <li>Programming Languages: Python, SQL</li>
-        <li>Database Tools: MySQL Workbench, Data Modeling, Query Optimization</li>
-        <li>Database Management: MySQL, Database Design, SQL Queries</li>
-        <li>Web Development: Python (Django/Flask), REST APIs</li>
-        <li>Data Analysis: Python (Pandas, NumPy), Data Visualization (Matplotlib)</li>
-        <li>Object-Oriented programming</li>
-        <li>Problem-Solving abilities</li>
-        <li>Microsoft Office</li>
-        </p>
-        <a href="https://drive.google.com/file/d/1r5xZYbfVWNDKgyK5iJXhYn-DzUMfiPdJ/view?usp=sharing"
-            class="button" target="_blank">View Resume</a>
-    </section>
-
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <div id="contact-form">
-            <h3>Send me a message</h3>
-            <form action="mailto:rohithadithyas2005@gmail.com" method="post" enctype="text/plain">
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Your Email:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
-
-        <div id="connect-with-me">
-            <h3>Connect with Me</h3>
-            <a href="https://www.linkedin.com/in/rohith-adithya-sangineedi-794650271" target="_blank"><i
-                    class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/srohithadithya/" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://x.com/RohithAdithyaS1?t=DMxrGLf29qWlhjgGH2bceA&mx=2" target="_blank"><i
-                    class="fab fa-twitter"></i></a>
         </div>
     </section>
 
-    <footer>
-        &copy; 2025 Sangineedi Rohith Adithya
+    <section id="skills" class="section-padding bg-dark">
+        <div class="container">
+            <h2 class="section-title reveal fade-bottom">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category reveal fade-left">
+                    <h3><i class="fas fa-code icon-highlight"></i> Programming Languages</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                    </ul>
+                </div>
+                <div class="skill-category reveal fade-bottom">
+                    <h3><i class="fas fa-database icon-highlight"></i> Database & Tools</h3>
+                    <ul>
+                        <li>MySQL Workbench</li>
+                        <li>Data Modeling</li>
+                        <li>Query Optimization</li>
+                        <li>MySQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category reveal fade-right">
+                    <h3><i class="fas fa-chart-line icon-highlight"></i> Data Analysis & ML</h3>
+                    <ul>
+                        <li>Python (Pandas, NumPy)</li>
+                        <li>Data Visualization (Matplotlib)</li>
+                        <li>Machine Learning (SVM, TensorFlow)</li>
+                        <li>Statistical Analysis</li>
+                    </ul>
+                </div>
+                <div class="skill-category reveal fade-left">
+                    <h3><i class="fas fa-laptop-code icon-highlight"></i> Web Development</h3>
+                    <ul>
+                        <li>Django</li>
+                        <li>Flask</li>
+                        <li>REST APIs</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+                <div class="skill-category reveal fade-right">
+                    <h3><i class="fas fa-users icon-highlight"></i> Soft Skills</h3>
+                    <ul>
+                        <li>Problem-Solving abilities</li>
+						<li>Supervision and Leadership</li>
+                        <li>Communication</li>
+                        <li>Teamwork and Collaboration</li>
+                        <li>Time Management</li>
+						<li>Quick Learner</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section-padding">
+        <div class="container">
+            <h2 class="section-title reveal fade-bottom">My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card reveal fade-left">
+                    <img src="https://editor.analyticsvidhya.com/uploads/50662High-employee-turnover.jpg" alt="Employee Attrition Prediction" class="project-image">
+                    <div class="project-info">
+                        <h3>Employee Attrition Prediction - ML Web App</h3>
+                        <p>Developed a machine learning model to predict employee attrition using Python, integrated into a Flask web application for real-time predictions. Focused on data preprocessing and model deployment.</p>
+                        <a href="https://github.com/srohithadithya/Skill-Vertex" target="_blank" class="btn btn-sm">View on GitHub <i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="project-card reveal fade-middle">
+                    <img src="https://storage.googleapis.com/kaggle-datasets-images/4210881/7265027/7dd70275b71ef22623be2a72c655675a/dataset-cover.jpg?t=2023-12-23-07-14-44" alt="Car Selling Price Prediction" class="project-image">
+                    <div class="project-info">
+                        <h3>Car Selling Price Prediction using ML</h3>
+                        <p>Created a predictive model using Python and TensorFlow to estimate car selling prices. The model considers various car attributes to provide accurate price forecasts.</p>
+                        <a href="https://github.com/srohithadithya/Real-Time-Research-Project" target="_blank" class="btn btn-sm">View on GitHub <i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+				<div class="project-card reveal fade-right">
+					<img src="http://t1.gstatic.com/images?q=tbn:ANd9GcT7S16vpSNjB1cW_OBZ4vgvBcmthMjHEjYuBk-Z69GqHnSlkt5Y5zqN0RFdKXci9FAWjibK2fp-" alt="Automated Road Damage Detection" class="project-image">
+                    <div class="project-info">
+                        <h3>Automated Road Damage Detection</h3>
+						<p>Developed a system using image processing and machine learning algorithms to automatically detect and classify different types of road damage for infrastructure maintenance.</p>
+						<a href="https://github.com/srohithadithya/Automated_road-damage" target="_blank" class="btn btn-sm">View on GitHub <i class="fab fa-github"></i></a>
+					</div>
+                </div>
+				<div class="project-card reveal fade-leftt">
+                    <img src="http://t3.gstatic.com/images?q=tbn:ANd9GcRA0P1HpMxz9ST71Cceb1CQkHSDNY5t6pTy-K9k4NKq9Vpzu3E8B3MrdZp7_XPosz3Utjb4_QtD" alt="Receipt tracker" class="project-image">
+                    <div class="project-info">
+                        <h3>Receipt Tracker</h3>
+                        <p>An application designed to digitalize and simplify personal expense tracking by allowing users to efficiently log and categorize their receipts.</p>
+                        <a href="https://github.com/srohithadithya/receipt_app" target="_blank" class="btn btn-sm">View on GitHub <i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+				<div class="project-card reveal fade-middle">
+                    <img src="https://img.etimg.com/thumb/width-1200,height-900,imgsize-1611329,resizemode-75,msid-117901110/news/new-updates/as-india-gets-busy-with-income-tax-calculator-techie-sparks-debate-saying-anyone-earning-60lpa-is-poor.jpg" alt="Multi Lingual Legal Tax Analyzerr" class="project-image">
+                    <div class="project-info">
+                        <h3>Multi Lingual Legal Tax Analyzer</h3>
+                        <p>A comprehensive tool that leverages natural language processing to analyze legal and tax documents across multiple languages, simplifying complex interpretations.</p>
+                        <a href="https://github.com/srohithadithya/MultilingualLegalTaxAnalyzer" target="_blank" class="btn btn-sm">View on GitHub <i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+				<div class="project-card reveal fade-right">
+                    <img src="https://www.figma.com/community/resource/40d3ec51-d2e1-4ea4-ad26-345e04497aef/thumbnail" alt="Personal Portfolio" class="project-image">
+                    <div class="project-info">
+                        <h3>Personal Portfolio</h3>
+                        <p>Developed a responsive and interactive personal portfolio using HTML, CSS, and JavaScript to showcase my academic projects, technical skills, and professional experience. Features modern design elements, subtle animations, and an intuitive user interface.</p>
+                        <a href="https://github.com/srohithadithya/Real-Time-Research-Project" target="_blank" class="btn btn-sm">View on GitHub <i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            <div class="text-center mt-4 reveal fade-bottom mx-auto">
+                <a href="mail_to:rohithadithyas2005@gmail.com" class="btn btn-primary">More Details & Collaborations</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section-padding bg-dark">
+        <div class="container">
+            <h2 class="section-title reveal fade-bottom">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item reveal fade-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Python Intern - Skill-Vertex</h3>
+                        <p class="timeline-date"><i class="far fa-calendar-alt"></i> Nov 2024 - Jan 2025</p>
+                        <p>Worked on real-time projects driven by data science, gaining practical knowledge of Python's usage and applying theoretical concepts to practical scenarios.</p>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <section id="education" class="section-padding">
+        <div class="container">
+            <h2 class="section-title reveal fade-bottom">Education</h2>
+            <div class="education-list">
+                <div class="education-item reveal fade-bottom">
+                    <h3>B.Tech (Artificial Intelligence & Data Science)</h3>
+                    <p class="institution"><i class="fas fa-university"></i> Malla Reddy College of Engineering</p>
+                    <p class="years"><i class="far fa-calendar-alt"></i> 2022 - 2026 (Expected) | CGPA:8.54</p>
+                    <p>Focused on core AI/ML concepts, data analytics, and software development, preparing for a career in data-driven fields.</p>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding bg-dark">
+        <div class="container">
+            <h2 class="section-title reveal fade-bottom">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-form-container reveal fade-left">
+                    <h3>Send me a message</h3>
+                    <form action="https://formspree.io/f/mqkvnwwy" method="POST" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required placeholder="john.doe@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="I'd like to discuss..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info-container reveal fade-right">
+                    <h3>Connect with Me</h3>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/rohith-adithya-sangineedi-794650271" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/srohithadithya/" target="_blank" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://x.com/RohithAdithyaS1?t=DMxrGLf29qWlhjgGH2bceA&mx=2" target="_blank" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="mailto:rohithadithyas2005@gmail.com" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt icon-highlight"></i> Hyderabad, Telangana, India</p>
+                        <p><i class="fas fa-envelope icon-highlight"></i> rohithadithyas2005@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Sangineedi Rohith Adithya. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#home">Home</a> |
+                <a href="#about">About</a> |
+                <a href="#projects">Projects</a> |
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
     </footer>
 
-    <script>
-        const homeSection = document.getElementById('home');
-        for (let i = 0; i < 5; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            particle.style.top = `${Math.random() * 100}%`;
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.animationDelay = `${Math.random() * 3}s`;
-            homeSection.appendChild(particle);
-        }
-
-        let lastScrollTop = 0;
-        window.addEventListener("scroll", function () {
-            let st = window.pageYOffset || document.documentElement.scrollTop;
-            if (st > lastScrollTop) {
-                nav.style.top = "-60px";
-            } else {
-                nav.style.top = "0";
-            }
-            lastScrollTop = st <= 0 ? 0 : st;
-        }, false);
-    </script>
-
+    <script src="script.js"></script>
 </body>
 
 </html>
